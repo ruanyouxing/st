@@ -31,7 +31,7 @@ st: $(OBJ)
 	$(CC) -o $@ $(OBJ) $(STLDFLAGS)
 
 clean:
-	rm -f st $(OBJ) st-$(VERSION).tar.gz config.h *.orig *.rej
+	rm -f st $(OBJ) st-$(VERSION).tar.gz config.h *.orig *.rej st_wallpaper.ff
 
 dist: clean
 	mkdir -p st-$(VERSION)
@@ -43,13 +43,14 @@ dist: clean
 
 install: st
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
+	cp -v extras/* $(PREFIX)/bin
+	jpg2ff < wallpaper.jpg | ff-border e 50 | ff-bright rgba 0 0.5 1 | ff-blur 50 15 > st_wallpaper.ff
+	cp -v st_wallpaper.ff $(PREFIX)/bin
 	cp -f st $(DESTDIR)$(PREFIX)/bin
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/st
 	mkdir -p $(DESTDIR)$(MANPREFIX)/man1
 	sed "s/VERSION/$(VERSION)/g" < st.1 > $(DESTDIR)$(MANPREFIX)/man1/st.1
 	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/st.1
-	tic -sx st.info
-	@echo Please see the README file regarding the terminfo entry of st.
 
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/st
