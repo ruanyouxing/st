@@ -6,13 +6,13 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *font =
-    "Iosevka Nerd Font Mono:pixelsize=16:antialias=true:autohint=true";
+    "JetBrains Mono Nerd Font:style=Regular:pixelsize=16:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
     /*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true",
      */
     "Hack Nerd Font Mono:pixelsize=15:antialias=true:autohint=true",
-    "Iconsolate for Powerline:pixelsize=15:antialias=true:autohint=true",
+    "Iconsolata for Powerline:pixelsize=15:antialias=true:autohint=true",
 };
 
 static int borderpx = 2;
